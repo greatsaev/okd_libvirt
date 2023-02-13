@@ -1,0 +1,23 @@
+kind: LDAPSyncConfig
+apiVersion: v1
+url: ldap://example.com:389
+insecure: true
+bindDN: CN=okd,OU=ex,DC=ex,DC=example,DC=com
+bindPassword: ''
+groupUIDNameMapping:
+  "CN=okd-admins,OU=Security_groups_admins,OU=ex,DC=ex,DC=example,DC=com": okd-admins
+  "CN=okd-users,OU=Security_groups_admins,OU=ex,DC=ex,DC=example,DC=com": okd-users
+augmentedActiveDirectory:
+    groupsQuery:
+        derefAliases: never
+        pageSize: 0
+    groupUIDAttribute: dn
+    groupNameAttributes: [ cn ]
+    usersQuery:
+        baseDN: "OU=ex,DC=ex,DC=example,DC=com"
+        scope: sub
+        derefAliases: never
+        filter: (objectclass=person)
+        pageSize: 0
+    userNameAttributes: [ cn ]
+    groupMembershipAttributes: [ "memberOf:1.2.840.113556.1.4.1941:" ]

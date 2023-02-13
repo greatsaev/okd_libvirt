@@ -1,0 +1,2 @@
+CN=okd-admins,OU=Security_groups_admins,OU=ex,DC=ex,DC=example,DC=com
+CN=okd-users,OU=Security_groups_admins,OU=ex,DC=ex,DC=example,DC=com
